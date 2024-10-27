@@ -7,8 +7,10 @@ const app = express();
 // Template Engine
 app.set('view engine', 'ejs');
 
-// Middleware
+// Middlewares
 app.use(express.static('public'));
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 
 /*
 const myLogger = (req, res, next) => {
@@ -30,6 +32,11 @@ app.get('/about', (req,res) => {
 
 app.get('/add', (req,res) => {
     res.render('add');
+});
+
+app.post('/photos', (req,res) => {
+    console.log(req.body);
+    res.redirect('/');
 });
 
 const port = 3000;
