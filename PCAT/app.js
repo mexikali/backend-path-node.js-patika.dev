@@ -1,8 +1,13 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
 const ejs = require('ejs');
+const Photo = require('./models/Photo');
 
 const app = express();
+
+// connect DB
+mongoose.connect('mongodb://localhost/pcat-test-db');
 
 // Template Engine
 app.set('view engine', 'ejs');
@@ -21,9 +26,10 @@ app.use(myLogger);
 */
 
 // Routes
-app.get('/', (req,res) => {
+app.get('/', async (req,res) => {
     //res.sendFile(path.resolve(__dirname, 'public/img/about-1.jpg'));
-    res.render('index');
+    const photos = await Photo.find({});
+    res.render('index', {photos});
 });
 
 app.get('/about', (req,res) => {
@@ -34,8 +40,8 @@ app.get('/add', (req,res) => {
     res.render('add');
 });
 
-app.post('/photos', (req,res) => {
-    console.log(req.body);
+app.post('/photos', async (req,res) => {
+    await Photo.create(req.body);
     res.redirect('/');
 });
 
