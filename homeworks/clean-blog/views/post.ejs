@@ -17,6 +17,12 @@
               <a href="#">Start Bootstrap</a>
               on <%= new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(blog.dateCreated)) %></span>
           </div>
+          <div class="tm-bg-gray tm-share-box">
+            <div class="clearfix">
+              <a class="btn btn-primary float-left" href="/blogs/edit/<%= blog._id%> ">&rarr; Update The Post &larr;</a>
+              <a class="btn btn-primary float-right" href="/blogs/<%= blog._id %>?_method=DELETE" onclick="return confirm('ARE YOU SURE?')">&rarr; Delete The Post &larr;</a>
+            </div>								
+          </div>
         </div>
       </div>
     </div>
