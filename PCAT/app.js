@@ -4,7 +4,7 @@ const fileUpload = require('express-fileupload');
 const methodOverride = require('method-override');
 const path = require('path');
 const ejs = require('ejs');
-const photoController = require('./controllers/phoneControllers');
+const photoController = require('./controllers/photoControllers');
 const pageController = require('./controllers/pageController');
 
 const app = express();
