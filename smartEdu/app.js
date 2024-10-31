@@ -6,15 +6,10 @@ const courseRoute = require('./routes/courseRoute');
 const app = express();
 
 // Connect DB
-mongoose.connect('mongodb://localhost/smartedu-db', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true
-}).then(() => {
+mongoose.connect('mongodb://localhost/smartedu-db').then(() => {
     console.log('DB CONNECTED SUCCESSFULY');
-}).catch(() => {
-    console.log('ERROR OCCURRED WHILE CONNECTING TO DB');
+}).catch((err) => {
+    console.log('ERROR OCCURRED WHILE CONNECTING TO DB',err);
 });
 
 // Template Engine
@@ -22,6 +17,9 @@ app.set("view engine", "ejs");
 
 // Middlewares
 app.use(express.static("public"));
+app.use(express.static('public'));
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 
 // Routes
 app.use('/', pageRoute);
