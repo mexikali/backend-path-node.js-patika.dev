@@ -13,3 +13,7 @@ exports.getRegisterPage = (req,res) => {
 exports.getLoginPage = (req,res) => {
     res.status(200).render('login', {page_name: 'login'});
 };
+
+exports.getContactPage = (req,res) => {
+    res.status(200).render('contact', {page_name: 'contact'});
+};
