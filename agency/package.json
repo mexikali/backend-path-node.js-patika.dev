@@ -4,12 +4,16 @@
   "description": "agency app from patika.dev - node.js backend path",
   "main": "app.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node app.js",
     "dev": "nodemon index.js"
   },
   "author": "Ömer Faruk Sezen",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1"
   }
 }
